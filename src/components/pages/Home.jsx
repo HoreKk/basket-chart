@@ -30,7 +30,7 @@ function Home() {
   
         setSelectedPlayer(JSON.stringify(player, null, 4))
         setIsLoading(false)
-      }, 600)
+      }, 500)
     }
 
     let timeoutId = ''

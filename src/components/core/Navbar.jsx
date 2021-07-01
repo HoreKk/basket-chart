@@ -23,8 +23,8 @@ function Navbar({ players }) {
               <Link href="/quickchart" className={`${itemLinkClass} ${currentPath == '/quickchart' ? 'bg-gray-900' : ''}`} setCurrentPath={setCurrentPath}>
                 QuickChart
               </Link>
-              <Link href="/teams" className={`${itemLinkClass} ${currentPath == '/teams' ? 'bg-gray-900' : ''}`} setCurrentPath={setCurrentPath}>
-                Equipes
+              <Link href="/players" className={`${itemLinkClass} ${currentPath == '/players' ? 'bg-gray-900' : ''}`} setCurrentPath={setCurrentPath}>
+                Joueurs
               </Link>
             </div>
           </div>
@@ -32,7 +32,7 @@ function Navbar({ players }) {
             <h1>Joueurs :</h1>
             {players && players.length 
               ? (players.map( player => 
-              <div key={player} className="ml-2">
+              <div key={player.id} className="ml-2">
                 <span>{player.first_name + ' ' + player.last_name}</span>
               </div>
               ))

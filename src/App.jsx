@@ -5,15 +5,15 @@ import Navbar from "./components/core/Navbar"
 
 import Home from "./components/pages/Home"
 import QuickChart from "./components/pages/QuickChart"
-import Teams from "./components/pages/Teams"
+import Players from "./components/pages/Players"
 
 function App() {
 
-  const [players, setPlayers] = useState([])
+  const [selectedPlayers, setSelectedPlayers] = useState([])
 
   return (
     <div className="App">
-      <Navbar players={players} />
+      <Navbar players={selectedPlayers} />
       <div className="container mx-auto">
         <Route path="/">
           <Home />
@@ -21,8 +21,8 @@ function App() {
         <Route path="/quickchart">
           <QuickChart />
         </Route>
-        <Route path="/teams">
-          <Teams />
+        <Route path="/players">
+          <Players selectedPlayers={selectedPlayers} setSelectedPlayers={setSelectedPlayers} />
         </Route>
       </div>
     </div>
