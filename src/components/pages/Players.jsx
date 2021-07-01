@@ -18,7 +18,7 @@ function Players({ selectedPlayers, setSelectedPlayers }) {
         
         let result = (await response.json())
 
-        setTotalPages(result.meta.total_pages)
+        setTotalPages(result.meta.total_pages != 0 ? result.meta.total_pages : 1)
 
         setPlayers(result.data)
         setIsLoading(false)
@@ -31,17 +31,6 @@ function Players({ selectedPlayers, setSelectedPlayers }) {
 
     return () => clearTimeout(timeoutId)
   }, [page, searchPlayer])
-
-  const handleChangeSelectedPlayers = (player) => {
-
-    if (selectedPlayers.length < 5) {
-      let newArray = [...selectedPlayers]
-      newArray.push(player)
-
-      setSelectedPlayers(newArray)
-    }
-
-  } 
 
   return (
     <div className="home text-center mt-10">
@@ -63,7 +52,7 @@ function Players({ selectedPlayers, setSelectedPlayers }) {
           <>
             {players.length ? ( players.map(player => 
               <div key={player.id} className={`flex flex-col items-center p-4 text-white w-1/5 hover:bg-gray-800 cursor-pointer 
-                   ${selectedPlayers.map(item => item.id).includes(player.id) ? 'bg-gray-800' : ''}`} onClick={() => handleChangeSelectedPlayers(player)}>
+                   ${selectedPlayers.map(item => item.id).includes(player.id) ? 'bg-gray-800' : ''}`} onClick={() => setSelectedPlayers(player)}>
                 <img className="w-16 h-16 mb-2" src={`http://i.cdn.turner.com/nba/nba/.element/img/1.0/teamsites/logos/teamlogos_500x500/${player.team.abbreviation.toLowerCase()}.png`} />
                 <span className="text-xs text-gray-400">Equipe : {player.team.city}</span>
                 <span className="text-xs text-gray-400">Position : {player.position}</span>

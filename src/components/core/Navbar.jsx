@@ -14,7 +14,9 @@ function Navbar({ players }) {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0 mr-3">
-              <img className="h-10 w-10" src="images/basket-chart.png"/>
+              <Link href="/" setCurrentPath={setCurrentPath}>
+                <img className="h-10 w-10" src="images/basket-chart.png"/>
+              </Link>
             </div>
             <div className="flex items-center ml-16 space-x-4">
               <Link href="/" className={`${itemLinkClass} ${currentPath == '/' ? 'bg-gray-900' : ''}`} setCurrentPath={setCurrentPath}>
@@ -26,6 +28,9 @@ function Navbar({ players }) {
               <Link href="/players" className={`${itemLinkClass} ${currentPath == '/players' ? 'bg-gray-900' : ''}`} setCurrentPath={setCurrentPath}>
                 Joueurs
               </Link>
+              <Link href="/compare" className={`${itemLinkClass} ${currentPath == '/compare' ? 'bg-gray-900' : ''}`} setCurrentPath={setCurrentPath}>
+                Comparaison
+              </Link>
             </div>
           </div>
           <div className="flex py-2 px-4 text-white">
@@ -33,12 +38,12 @@ function Navbar({ players }) {
             {players && players.length 
               ? (players.map( player => 
               <div key={player.id} className="ml-2">
-                <span>{player.first_name + ' ' + player.last_name}</span>
+                <span>{player.last_name}</span>
               </div>
               ))
               : (
                 <div className="ml-2">
-                  Aucun joueur selectionné
+                  Aucun joueur selectionnés
                 </div>
               )
             }

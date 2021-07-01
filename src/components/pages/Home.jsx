@@ -80,7 +80,7 @@ function Home() {
       <div className="flex flex-col lg:flex-row h-full my-10 justify-center">
         <div className="flex flex-col w-full lg:w-1/2 bg-gray-800 text-white rounded-lg px-10 py-8 mr-16">
           <h1 className="text-3xl font-semibold">QuickChart</h1>
-          <p className="mt-4">Générer des images de graphiques avec une API simple et ouverte</p>
+          <p className="mt-4">LL'API QuickChart permet de générer des images de graphiques de manière simple</p>
           <div className="rounded-lg p-5 mt-5 bg-white">
             <img className="h-96" src={urlQuickchart} />
           </div>
