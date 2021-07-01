@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import Link from "../components/utils/Link";
+import Link from "../utils/Link";
 
-function Navbar() {
+function Navbar({ players }) {
 
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
@@ -20,10 +20,28 @@ function Navbar() {
               <Link href="/" className={`${itemLinkClass} ${currentPath == '/' ? 'bg-gray-900' : ''}`} setCurrentPath={setCurrentPath}>
                 Home
               </Link>
+              <Link href="/quickchart" className={`${itemLinkClass} ${currentPath == '/quickchart' ? 'bg-gray-900' : ''}`} setCurrentPath={setCurrentPath}>
+                QuickChart
+              </Link>
               <Link href="/teams" className={`${itemLinkClass} ${currentPath == '/teams' ? 'bg-gray-900' : ''}`} setCurrentPath={setCurrentPath}>
-                Equipe
+                Equipes
               </Link>
             </div>
+          </div>
+          <div className="flex py-2 px-4 text-white">
+            <h1>Joueurs :</h1>
+            {players && players.length 
+              ? (players.map( player => 
+              <div key={player} className="ml-2">
+                <span>{player.first_name + ' ' + player.last_name}</span>
+              </div>
+              ))
+              : (
+                <div className="ml-2">
+                  Aucun joueur selectionné
+                </div>
+              )
+            }
           </div>
         </div>
       </div>
